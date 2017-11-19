@@ -1,76 +1,112 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Encode Sans Semi Condensed', sans-serif;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-body {
-	background: #FAFAFA;
-	font-family: arial, helvetica, sans-serif;
-	font-size: 16px;
-}
-
-.wrap {
-	margin: auto;
-	max-width: 800px;
-	width: 90%;
-}
-
-.principal {
-	background: #F44336;
-	border-top: 20px solid #D32F2F;
-	color: #fff;
-	padding: 50px 0;
+header{
 	width: 100%;
+	background-color: #026AA7;
+	overflow: hidden;
+	position: fixed;
+	z-index: 1000;
+	display: table;
 }
 
-.principal .formulario {
-	color: #212121;
+.header{
+	padding: 10px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.contenedor:before, .contenedor:after{
+  display: table;
+  content: "";
+}
+
+.fijando-cajas{
+  display: flex;
+  flex-wrap: wrap;
+  content: "";
+  clear: both;
+}
+
+.nav{
+	width: 30%;
+	margin-top: 8px;
+}
+
+.nav a{
+	padding: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	background: rgba(255,255,255,.3);
+	color: #f3f3f3;
+	font-size: 15px;
+	font-weight: 700;
+	text-decoration: none;
+	border-radius: 5px;
+}
+
+.nav input{
+	padding: 5px;
+	background: rgba(255,255,255,.3);
+	color: #f3f3f3;
+	font-size: 15px;
+	font-weight: 700;
+	text-decoration: none;
+	border-radius: 5px;
+	border: none;
+}
+
+.nav input:focus{
+	outline: none;
+	width: 300px;
+	background-color: white;
+}
+
+.logo{
+	width: 40%;
+	justify-content: center;
 	text-align: center;
 }
 
-.principal .formulario input[type=text] {
-	margin-bottom: 20px;
-	padding: 10px;
-	width: 100%;
-}
-
-.principal .formulario input[type=text].error {
-	border: 5px solid #D32F2F;
-	color: red;
-}
-
-.principal .formulario .boton {
-	background: none;
-	border: 1px solid #D32F2F;
-	color: #fff;
-	display: inline-block;
-	font-size: 16px;
-	padding: 15px;
-}
-
-.principal .formulario .boton:hover {
-	border: 1px solid #fff;
-}
-
-/* - Tareas - */
-.tareas .lista {
-	list-style: none;
-}
-
-.tareas .lista li {
-	border-bottom: 1px solid #B6B6B6;
-}
-
-.tareas .lista li a {
-	color: #212121;
-	display: block;
-	padding: 20px 0;
+.logo a{
+	font-family: 'Yellowtail', cursive;
+	font-size: 30px;
 	text-decoration: none;
+	color:white;
+	opacity: 0.4;
 }
 
-.tareas .lista li a:hover {
-	text-decoration: line-through;
+.logo a i{
+	font-size: 25px;
+}
+.nav2{
+	width: 30%;
+}
+
+.menu{
+	width: 40px;
+	height: 40px;
+	font-size: 20px;
+	float: right;
+	margin-right: 20px;
+	padding: 8px;
+	background: rgba(255,255,255,.3);
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+}
+
+.iniciales{
+	color: black;
+	border-radius: 50%;
+	font-weight: 500;
+	font-size: 15px;
+	padding-top: 10px;
 }
