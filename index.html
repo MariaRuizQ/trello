@@ -14,6 +14,9 @@
       	  <section class="nav">
       	    <a href="#"><i class="fa fa-trello" aria-hidden="true"></i>  Tableros</a>
             <input type="text" name="" value="">
+            <div class="info">
+              <p><i class="fa fa-clock-o" aria-hidden="true"></i>  Tableros recientes <a href="#">-</a></p>
+            </div>
       	  </section>
       	  <section class="logo">
             <a href="#"><i class="fa fa-trello" aria-hidden="true"></i>  Trello</a>
@@ -27,16 +30,24 @@
         </div>
     	</header>
       <main>
-        <div>
-          <div>
-            <a href="#"><input type="text" name="" id=""></a>
+        <div class="menu-cuerpo">
+          <div class="menu-cuerpo-1">
+            <a class="laboratoria"href="#">Laboratoria</a>
             <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-lock" aria-hidden="true"></i>Privado</a>
+            <a href="#"><i class="fa fa-lock" aria-hidden="true"></i>  Privado</a>
           </div>
-          <div><a href="#"><i class="fa fa-bars" aria-hidden="true"></i>Mostrar Menú</a></div>
+          <div class="menu-cuerpo-2"><a href="#"><i class="fa fa-bars" aria-hidden="true"></i>   Mostrar Menú</a></div>
         </div>
-        <div>
-          <input type="text" name="" value="">
+        <!--
+        <div id="añadir" class="añadir">
+          <input id="añadir-espacio" type="text" name="" value="" placeholder="Añadir una lista...">
+        </div>-->
+        <div id="container">
+            <div id="add-a-list-btn">Añadir una lista...</div>
+            <div id="save-list-box">
+                <input id="list-input-box" placeholder="Añadir una lista..." />
+                <button type="button" id="save-list-btn">Guardar</button>
+            </div>
         </div>
       </main>
 

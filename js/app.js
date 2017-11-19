@@ -1,59 +1,81 @@
-(function(){
-	// Variables
-	var lista = document.getElementById("lista"),
-		tareaInput = document.getElementById("tareaInput"),
-		btnNuevaTarea = document.getElementById("btn-agregar");
+var container = document.getElementById("container"),
+    addListBtn = document.getElementById("add-a-list-btn"),
+    saveListBtn = document.getElementById("save-list-btn"),
+    saveListBox = document.getElementById("save-list-box"),
+    listInputBox = document.getElementById("list-input-box"),
+    textValue;
 
-	// Funciones
-	var agregarTarea = function(){
-		var tarea = tareaInput.value,
-			nuevaTarea = document.createElement("li"),
-			enlace = document.createElement("a"),
-			contenido = document.createTextNode(tarea);
+var data = {
+    lists: []
+};
 
-		if (tarea === "") {
-			tareaInput.setAttribute("placeholder", "Agrega una tarea valida");
-			tareaInput.className = "error";
-			return false;
-		}
+function addList() {
+    "use strict";
+    saveListBox.style.display = "inline-block";
+    addListBtn.style.display = "none";
+}
 
-		// Agregamos el contenido al enlace
-		enlace.appendChild(contenido);
-		// Le establecemos un atributo href
-		enlace.setAttribute("href", "#");
-		// Agrergamos el enlace (a) a la nueva tarea (li)
-		nuevaTarea.appendChild(enlace);
-		// Agregamos la nueva tarea a la lista
-		lista.appendChild(nuevaTarea);
+function createList(textValue) {
+    "use strict";
+    if (textValue) {
+        var parentDiv = document.createElement("div"),
+            listTitle = document.createElement("div"),
+            title = document.createElement("div"),
+            dotIcon = document.createElement("a"),
+            newTextNode = document.createTextNode(textValue),
+            addCardLink = document.createElement("a"),
+            addText = document.createTextNode("Añadir una tarjeta..."),
+            lists,
+            x,
+            y;
 
-		tareaInput.value = "";
+        data.lists.push({
+            title: textValue,
+            cards: []
+        });
 
-		for (var i = 0; i <= lista.children.length -1; i++) {
-			lista.children[i].addEventListener("click", function(){
-				this.parentNode.removeChild(this);
-			});
-		}
+        lists = data.lists.map(function (e) {
+            return e;
+        });
 
-	};
-	var comprobarInput = function(){
-		tareaInput.className = "";
-		teareaInput.setAttribute("placeholder", "Agrega tu tarea");
-	};
+        for (x = 0; x < lists.length; x += 1) {
+            parentDiv.setAttribute("class", "add-card-container");
+            parentDiv.setAttribute("id", "list-container" + x);
+            dotIcon.setAttribute("class", "fa fa-ellipsis-h ellipsis");
+            dotIcon.setAttribute("id", "del" + x);
+            title.setAttribute("contenteditable", "true");
+            title.setAttribute("class", "text");
+            title.appendChild(newTextNode);
+            listTitle.appendChild(dotIcon);
+            listTitle.setAttribute("class", "list-title");
+            listTitle.appendChild(title);
+            addCardLink.setAttribute("href", "#");
+            addCardLink.setAttribute("class", "add-card");
+            addCardLink.setAttribute("id", "add" + x);
+            addCardLink.appendChild(addText);
+            parentDiv.style.cssFloat = "left";
+            parentDiv.style.display = "inline-block";
+            parentDiv.appendChild(listTitle);
+            parentDiv.appendChild(addCardLink);
+            container.insertBefore(parentDiv, addListBtn);
+            addListBtn.style.display = "inline-block";
+            saveListBox.style.display = "none";
+            listInputBox.value = "";
 
-	var eleminarTarea = function(){
-		this.parentNode.removeChild(this);
-	};
+            document.getElementById("add" + x).addEventListener('click', addCards(x));
 
-	// Eventos
+        }
+    }
+}
 
-	// Agregar Tarea
-	btnNuevaTarea.addEventListener("click", agregarTarea);
+window.addEventListener("load", function () {
+    "use strict";
+    addListBtn.addEventListener("click", function () {
+        addList();
+    });
 
-	// Comprobar Input
-	tareaInput.addEventListener("click", comprobarInput);
-
-	// Borrando Elementos de la lista
-	for (var i = 0; i <= lista.children.length -1; i++) {
-		lista.children[i].addEventListener("click", eleminarTarea);
-	}
-}());
+    saveListBtn.addEventListener("click", function () {
+        textValue = listInputBox.value;
+        createList(textValue);
+    });
+});
